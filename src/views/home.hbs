@@ -1,0 +1,22 @@
+<h1>Lista de Productos</h1>
+    {{#if products.length}}
+        <ul>
+            {{#each products}}
+                <li>
+                    <h4>{{this.title}}</h4> 
+                    
+                    <p>Precio: ${{this.price}}</p>
+                    
+                    <p>Stock: {{this.stock}} unidades.</p>
+        
+                    <p>Descripcion: {{this.description}}.</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No hay productos disponibles.</p>
+    {{/if}}
+
+<br>
+
+<p> Para ver el listado en tiempo real de los productos ingrese a <a href="/realTimeProducts">realTimeProducts</a></p>

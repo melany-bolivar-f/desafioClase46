@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos en el carrito</title>
+    <!-- Agrega el enlace al CDN de Bootstrap para usar sus estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Productos en el carrito</h1>
+            <a href="/products" class="btn btn-secondary">Volver a Productos</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productsInfo}}
+                    <tr id="fila-{{this.id}}">
+                        <td>{{this.title}}</td>
+                        <td id="precio-{{this.id}}">{{this.price}}</td>
+                        <td id="cantidad-{{this.id}}">{{this.quantity}}</td>
+                        <td id="subtotal-{{this.id}}">{{this.subtotal}}</td>
+                        <td> <button onclick="eliminarProductoCarrito('{{this.cartId}}', '{{this.id}}')" class="btn btn-danger">Eliminar Producto</button></td>
+                    </tr>
+                {{/each}}
+                
+            </tbody>
+        </table>
+        <p id="total">Total: {{totalAmount}}</p>
+
+        <form id="finalizarCompraForm" method="POST">
+            <button type="submit" class="btn btn-primary">Finalizar compra</button>
+        </form>
+    </div>
+    <script src="/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+</body>
+
+<script>
+    const socket = io();
+
+    socket.on('productoEliminado', ({ cartId, productId }) => {
+        const cantidadElement = document.getElementById(cantidad-${productId});
+        const subtotalElement = document.getElementById(subtotal-${productId});
+        cantidadElement.textContent = '0'; 
+        subtotalElement.textContent = '0'; 
+        const filaProducto = document.getElementById(fila-${productId});
+        filaProducto.remove(); 
+    });
+</script>
+
+</html>

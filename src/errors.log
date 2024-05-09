@@ -1,0 +1,24 @@
+error: undefined {"_message":"User validation failed","errors":{"last_name":{"kind":"required","message":"Path `last_name` is required.","name":"ValidatorError","path":"last_name","properties":{"message":"Path `last_name` is required.","path":"last_name","type":"required"}}}}
+error: Contraseña incorrecta
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\src\\routes\\premiumRoutes.js:156:16\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: Error al eliminar usuario: Cannot read properties of undefined (reading 'then') {"stack":"TypeError: Cannot read properties of undefined (reading 'then')\n    at SweetAlert.then (C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\node_modules\\sweetalert2\\dist\\sweetalert2.all.js:4379:54)\n    at C:\\Users\\Juan\\Desktop\\Comision-39355-CoderHouse\\Backend\\Preentrega-BackEnd-main\\src\\routes\\premiumRoutes.js:156:16\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+error: undefined {"_message":"Product validation failed","errors":{"owner":{"kind":"required","message":"Path `owner` is required.","name":"ValidatorError","path":"owner","properties":{"message":"Path `owner` is required.","path":"owner","type":"required"}}}}
+error: undefined {"_message":"Product validation failed","errors":{"owner":{"kind":"required","message":"Path `owner` is required.","name":"ValidatorError","path":"owner","properties":{"message":"Path `owner` is required.","path":"owner","type":"required"}}}}
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined
+error: undefined

@@ -1,0 +1,153 @@
+swagger: "2.0"
+info:
+  description: "Documentación de la API para el manejo de productos"
+  version: "1.0.0"
+  title: "API de Productos"
+basePath: "/"
+paths:
+  /products:
+    get:
+      summary: Obtiene todos los productos paginados.
+      parameters:
+        - in: query
+          name: page
+          type: integer
+          description: Número de página a recuperar.
+        - in: query
+          name: limit
+          type: integer
+          description: Número máximo de productos por página.
+      responses:
+        '200':
+          description: Retorna una lista paginada de productos.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              payload:
+                type: array
+                items:
+                  $ref: "#/definitions/Product"
+              totalPage:
+                type: integer
+              prevpage:
+                type: integer
+              nextPage:
+                type: integer
+              page:
+                type: integer
+              hasprevpage:
+                type: boolean
+              hasnextpage:
+                type: boolean
+              prevLink:
+                type: string
+              nextLink:
+                type: string
+        '500':
+          description: Error interno del servidor.
+
+    post:
+      summary: Crea un nuevo producto.
+      parameters:
+        - in: body
+          name: product
+          required: true
+          schema:
+            $ref: "#/definitions/Product"
+      responses:
+        '200':
+          description: Producto creado con éxito.
+        '400':
+          description: Campos faltantes en la solicitud.
+        '500':
+          description: Error interno del servidor.
+
+  /products/{pid}:
+    get:
+      summary: Obtiene un producto por su ID.
+      parameters:
+        - in: path
+          name: pid
+          type: string
+          required: true
+          description: ID del producto.
+      responses:
+        '200':
+          description: Retorna el producto solicitado.
+          schema:
+            $ref: "#/definitions/Product"
+        '404':
+          description: Producto no encontrado.
+        '500':
+          description: Error interno del servidor.
+
+    put:
+      summary: Actualiza un producto por su ID.
+      parameters:
+        - in: path
+          name: pid
+          type: string
+          required: true
+          description: ID del producto.
+        - in: body
+          name: product
+          required: true
+          schema:
+            $ref: "#/definitions/Product"
+      responses:
+        '200':
+          description: Producto actualizado con éxito.
+        '400':
+          description: Campos faltantes en la solicitud.
+        '404':
+          description: Producto no encontrado.
+        '500':
+          description: Error interno del servidor.
+
+    delete:
+      summary: Elimina un producto por su ID.
+      parameters:
+        - in: path
+          name: pid
+          type: string
+          required: true
+          description: ID del producto.
+      responses:
+        '200':
+          description: Producto eliminado con éxito.
+        '404':
+          description: Producto no encontrado.
+        '500':
+          description: Error interno del servidor.
+
+definitions:
+  Product:
+    type: object
+    properties:
+      _id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      code:
+        type: string
+      price:
+        type: number
+      stock:
+        type: integer
+      category:
+        type: string
+      thumbnails:
+        type: array
+        items:
+          type: string
+    required:
+      - title
+      - description
+      - code
+      - price
+      - stock
+      - category

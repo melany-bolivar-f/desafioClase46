@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Documentos</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+            <h1 class="mb-4">Subir Documentos</h1>
+
+            <form action="/api/users/{{userId}}/documents" method="post" enctype="multipart/form-data" class="mb-4" id="uploadForm">
+                <div class="mb-3">
+                    <label for="documentacion" class="form-label">Documentación:</label>
+                    <input type="file"  name="documents" id="documentacion" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="comprobanteDomicilio" class="form-label">Comprobante de Domicilio:</label>
+                    <input type="file" name="documents" id="comprobanteDomicilio" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="comprobanteCuenta" class="form-label">Comprobante de Estado de Cuenta:</label>
+                    <input type="file"  name="documents" id="comprobanteCuenta" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitButton">Subir Documentos</button>
+            </form>
+        </div>
+</body>
+</html>

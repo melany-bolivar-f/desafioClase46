@@ -1,0 +1,148 @@
+swagger: "2.0"
+info:
+  description: "Documentación de la API para la gestión de sesiones de usuario"
+  version: "1.0.0"
+  title: "API de Sesiones de Usuario"
+basePath: "/"
+paths:
+  /session/register:
+    post:
+      summary: Registra un nuevo usuario.
+      responses:
+        '302':
+          description: Redirección exitosa al inicio de sesión.
+        '500':
+          description: Error interno del servidor.
+
+  /session/login:
+    post:
+      summary: Inicia sesión con credenciales de usuario.
+      responses:
+        '302':
+          description: Redirección exitosa al área protegida.
+        '401':
+          description: Credenciales inválidas.
+        '500':
+          description: Error interno del servidor.
+
+  /session/github:
+    get:
+      summary: Inicia sesión con GitHub.
+      responses:
+        '302':
+          description: Redirección exitosa a la autenticación de GitHub.
+        '500':
+          description: Error interno del servidor.
+
+  /session/githubcallback:
+    get:
+      summary: Callback de autenticación de GitHub.
+      responses:
+        '302':
+          description: Redirección exitosa al área protegida.
+        '500':
+          description: Error interno del servidor.
+
+  /session/logout:
+    get:
+      summary: Cierra la sesión actual.
+      responses:
+        '302':
+          description: Redirección exitosa al inicio de sesión.
+        '500':
+          description: Error interno del servidor.
+
+  /session/current:
+    get:
+      summary: Obtiene el usuario actualmente autenticado.
+      responses:
+        '200':
+          description: Retorna información sobre el usuario actual.
+          schema:
+            $ref: "#/definitions/UserInfo"
+        '401':
+          description: No autorizado.
+        '500':
+          description: Error interno del servidor.
+
+  /session/reset-password/{token}:
+    get:
+      summary: Renderiza el formulario de restablecimiento de contraseña.
+      parameters:
+        - in: path
+          name: token
+          type: string
+          required: true
+          description: Token de restablecimiento de contraseña.
+      responses:
+        '200':
+          description: Renderiza el formulario de restablecimiento de contraseña.
+        '404':
+          description: Token de restablecimiento de contraseña inválido o expirado.
+        '500':
+          description: Error interno del servidor.
+
+    post:
+      summary: Procesa el restablecimiento de contraseña.
+      parameters:
+        - in: path
+          name: token
+          type: string
+          required: true
+          description: Token de restablecimiento de contraseña.
+        - in: body
+          name: newPassword
+          required: true
+          schema:
+            type: object
+            properties:
+              password:
+                type: string
+                description: Nueva contraseña.
+              confirm_password:
+                type: string
+                description: Confirmación de la nueva contraseña.
+      responses:
+        '200':
+          description: Contraseña restablecida correctamente.
+        '400':
+          description: Las contraseñas no coinciden.
+        '404':
+          description: Token de restablecimiento de contraseña inválido o expirado.
+        '500':
+          description: Error interno del servidor.
+
+  /session/reset-password:
+    post:
+      summary: Solicita un correo electrónico de restablecimiento de contraseña.
+      parameters:
+        - in: body
+          name: email
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                description: Correo electrónico del usuario.
+      responses:
+        '200':
+          description: Correo electrónico de restablecimiento de contraseña enviado.
+        '404':
+          description: Usuario no encontrado.
+        '500':
+          description: Error interno del servidor.
+
+definitions:
+  UserInfo:
+    type: object
+    properties:
+      _id:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      role:
+        type: string

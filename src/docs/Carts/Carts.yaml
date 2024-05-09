@@ -1,0 +1,187 @@
+swagger: "2.0"
+info:
+  description: "Documentación de la API de tu proyecto final"
+  version: "1.0.0"
+  title: "API Documentation"
+basePath: "/"
+
+paths:
+  /carts:
+    get:
+      summary: Obtiene todos los carritos.
+      responses:
+        '200':
+          description: Retorna una lista de carritos.
+        '500':
+          description: Error interno del servidor.
+
+  /carts/{uid}:
+    post:
+      summary: Crea un nuevo carrito para un usuario.
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: ID del usuario.
+      responses:
+        '201':
+          description: Carrito creado con éxito.
+        '200':
+          description: Ya existe un carrito asociado a este usuario.
+        '500':
+          description: Error interno del servidor.
+
+    get:
+      summary: Obtiene el carrito de un usuario.
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: ID del usuario.
+      responses:
+        '200':
+          description: Retorna el carrito del usuario especificado.
+        '404':
+          description: El carrito del usuario no se encuentra.
+        '500':
+          description: Error interno del servidor.
+
+  /carts/{cid}/products/{pid}:
+    post:
+      summary: Agrega un producto al carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+        - in: path
+          name: pid
+          schema:
+            type: string
+          required: true
+          description: ID del producto.
+      responses:
+        '200':
+          description: Producto agregado al carrito con éxito.
+        '400':
+          description: Error al agregar el producto al carrito.
+        '404':
+          description: El carrito o el producto no se encuentran.
+        '500':
+          description: Error interno del servidor.
+
+    delete:
+      summary: Elimina un producto del carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+        - in: path
+          name: pid
+          schema:
+            type: string
+          required: true
+          description: ID del producto.
+      responses:
+        '200':
+          description: Producto eliminado del carrito con éxito.
+        '404':
+          description: El carrito o el producto no se encuentran.
+        '500':
+          description: Error interno del servidor.
+
+    put:
+      summary: Actualiza la cantidad de un producto en el carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+        - in: path
+          name: pid
+          schema:
+            type: string
+          required: true
+          description: ID del producto.
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              quantity:
+                type: integer
+                example: 3
+          description: Cantidad a actualizar.
+      responses:
+        '200':
+          description: Cantidad de producto actualizada en el carrito con éxito.
+        '400':
+          description: Error al actualizar la cantidad del producto en el carrito.
+        '404':
+          description: El carrito o el producto no se encuentran.
+        '500':
+          description: Error interno del servidor.
+
+  /carts/{cid}:
+    delete:
+      summary: Vacía un carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+      responses:
+        '200':
+          description: Carrito vaciado con éxito.
+        '404':
+          description: El carrito no se encuentra.
+        '500':
+          description: Error interno del servidor.
+
+  /carts/{cid}/purchase:
+    get:
+      summary: Obtiene los detalles de compra de un carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+      responses:
+        '200':
+          description: Retorna los detalles de compra del carrito.
+        '404':
+          description: El carrito no se encuentra.
+        '500':
+          description: Error interno del servidor.
+    post:
+      summary: Realiza la compra de los productos en un carrito.
+      parameters:
+        - in: path
+          name: cid
+          schema:
+            type: string
+          required: true
+          description: ID del carrito.
+      responses:
+        '200':
+          description: Compra realizada con éxito.
+        '404':
+          description: El carrito no se encuentra.
+        '500':
+          description: Error interno del servidor.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+    <h1>Información del Usuario Actual</h1>
+
+    {{#if user}}
+        <div class="card mt-3">
+            <div class="card-body">
+                <p class="card-text"><strong>Nombre de usuario:</strong> {{user.first_name}}   <a href="/userProfile" class="btn btn-success">Perfil</a></p>
+                <p class="card-text"><strong>Rol:</strong> {{user.role}}</p>
+
+                {{#if isAdmin}}
+                    <h2 class="card-title">Listado de Usuarios:</h2>
+                    <ul class="list-group">
+                        {{#each users}}
+                            <li class="list-group-item">Nombre: {{this.first_name}} | Apellido: {{this.last_name}} | Email: {{this.email}} | Edad: {{this.age}}</li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                    <p class="card-text text-danger"><strong>Datos sensibles bloqueados por falta de rango!</strong></p>
+                {{/if}}
+            </div>
+        </div>
+        <br>
+    {{else}}
+        <p class="mt-3">Usuario no autenticado</p>
+    {{/if}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
